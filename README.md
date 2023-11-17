@@ -1,1 +1,1 @@
-# IKEA-Air-Quality-Sensor
+# IKEA Air Quality Sensor
