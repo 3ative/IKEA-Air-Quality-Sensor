@@ -11,7 +11,7 @@ Converting and adding sensors to the off-the-shelf VINDRIKTNING Air quality sens
 
 #### *Code-y Bits*
 - [V1 - Base ESPHome Code](https://github.com/3ative/IKEA-Air-Quality-Sensor/blob/main/ikea_aq_v1.yaml)
-- [V2 - Advanced Automation Code](https://github.com/3ative/IKEA-Air-Quality-Sensor/blob/main/ikea_aq_v2.yaml)
+- [V2 - COMING SOON](#)
 
 
 #### YouTube tutorials:
