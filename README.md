@@ -19,13 +19,6 @@ Converting and adding sensors to the off-the-shelf VINDRIKTNING Air quality sens
 
 [Part 2 - IKEA Air Filter ESPHome Convert](https://youtu.be/_XgJyYwlejo)
 
-Basic YAML
-```yaml
-
-```
-
-
-
 
 
 ___
