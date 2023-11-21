@@ -1,5 +1,7 @@
 # IKEA Air Quality Sensor
-Converting and adding sensors to the off-the-shelf VINDRIKTNING Air quality sensor.
+Converting and adding sensors to an off-the-shelf **VINDRIKTNING Air quality sensor**
+
+- Turning it in to a Seven-in-One enviroment sensor 🏝
 
 #### _Sensing List:_
 
@@ -9,15 +11,15 @@ Converting and adding sensors to the off-the-shelf VINDRIKTNING Air quality sens
 > - Light Level (Basic)
 
 
-#### *Code-y Bits*
+#### ⚡*Code-y Bits*
 - [V1 - Base ESPHome Code](https://github.com/3ative/IKEA-Air-Quality-Sensor/blob/main/ikea_aq_v1.yaml)
 - [V2 - COMING SOON](#)
 
 
-#### YouTube tutorials:
-[Part 1 - IKEA Air Quality ESPHome Convert](https://youtu.be/_XgJyYwlejo)
+#### 🎬YouTube tutorials:
+[Part 1 - IKEA Air Quality ESPHome Convert](https://youtu.be/YmqtMTO5NVc)
 
-[Part 2 - IKEA Air Filter ESPHome Convert](https://youtu.be/_XgJyYwlejo)
+[Part 2 - IKEA Air Filter ESPHome Convert](#)
 
 
 ___
