@@ -21,6 +21,9 @@ Converting and adding sensors to an off-the-shelf **VINDRIKTNING Air quality sen
 
 [Part 2 - IKEA Air Filter ESPHome Convert](https://youtu.be/WB4xxhgggHQ)
 
+#### 🎬Coming Soon:
+[Part 3 - Automating the System](#)
+
 
 ___
 
