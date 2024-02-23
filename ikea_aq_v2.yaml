@@ -101,7 +101,7 @@ sensor:
     baseline: xxxxxx
 
   ## Temp/Humidity/Pressure Sensor
-  - platform: bme280
+  - platform: bme280_i2c
     temperature:
       name: $name Temperature
       id: bme_temp
