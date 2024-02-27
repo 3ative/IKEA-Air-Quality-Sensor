@@ -15,6 +15,11 @@ Converting and adding sensors to an off-the-shelf **VINDRIKTNING Air quality sen
 - [V1 - Base ESPHome Code](https://github.com/3ative/IKEA-Air-Quality-Sensor/blob/main/ikea_aq_v1.yaml)
 - [V2 - ESPHome Update](https://github.com/3ative/IKEA-Air-Quality-Sensor/blob/main/ikea_aq_v2.yaml)
 
+Update to add a "Master Control" to Enable/Disable Sending Conrol to the Ikea Air Filter
+- [Automation Control](https://github.com/3ative/IKEA-Air-Quality-Sensor/blob/main/Automation_Master.yaml)
+
+
+
 
 #### 🎬YouTube tutorials:
 [Part 1 - IKEA Air Quality ESPHome Convert](https://youtu.be/YmqtMTO5NVc)
