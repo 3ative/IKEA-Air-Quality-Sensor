@@ -1,0 +1,39 @@
+switch:
+## Master Control - Enable/Disable
+  - platform: template
+    id: enable
+    icon: mdi:fan
+    name: ${name} master
+    optimistic: true
+    restore_mode: RESTORE_DEFAULT_ON
+    
+    
+sensor:
+  ## IKEA PMS 2.5µg Sensor
+  - platform: pm1006
+    id: aq_sensor
+    pm_2_5:
+      name: $name 2.5µg
+      on_value:
+        - if:
+            condition:
+              and:
+                - binary_sensor.is_off: enable_automation
+                - switch.is_on: enable
+            then:
+              - homeassistant.service:
+                  service: number.set_value
+                  data:
+                    entity_id: $ap_id
+                    value: !lambda |-
+                      auto range = (x - $pms_low) / ($pms_high - $pms_low) * $af_speeds;
+                      auto value = (x < $pms_low) ? 0 : (range > $af_speeds) ? $af_speeds : range;
+                      return ceil(value);
+            else:
+              # If the auto_enable binary sensor is off, set the fan speed to 0
+              - homeassistant.service:
+                  service: number.set_value
+                  data:
+                    entity_id: $ap_id
+                    value: '0'    
+ 
