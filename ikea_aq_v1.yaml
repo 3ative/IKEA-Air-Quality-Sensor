@@ -14,6 +14,7 @@ wifi:
 api:
 
 ota:
+  platform: esphome
 logger:
   logs:
     sensor: none
