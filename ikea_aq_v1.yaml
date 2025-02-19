@@ -3,8 +3,9 @@ substitutions:
   name: "Studio AQ"
 
 esphome:
-  name: studio-air-quality
-  platform: ESP8266
+  name: "air-quality-studio"
+
+esp8266:
   board: d1_mini
 
 wifi:
