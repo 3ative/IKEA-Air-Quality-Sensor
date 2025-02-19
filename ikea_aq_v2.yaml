@@ -7,8 +7,9 @@ substitutions:
   pms_high: '400'  ## 2.5µm Count for Fan MAX [MUST BE IN QUOTES]
 
 esphome:
-  name: studio-air-quality
-  platform: ESP8266
+  name: "air-quality-studio"
+
+esp8266:
   board: d1_mini
 
 wifi:
