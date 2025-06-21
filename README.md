@@ -2,7 +2,28 @@
 Converting and adding sensors to an off-the-shelf **VINDRIKTNING Air quality sensor**
 
 - Turning it in to a Seven-in-One enviroment sensor 🏝
+# Important Update:
+In "Fix your IKEA Air Quality Temperature and Humidity readings" video, I made a mistake in moving (not duplicating) the following lines:
+```yaml
+    address: 0x76
+    update_interval: 10s
+```
+This stops the first (orginal) set of Temperature and Humidity Sensors outputing data the C0²/VOC sensor (``platform: ccs811``) needs. 
 
+# Fix for the Fix:
+Copy back ``address: 0x76`` and ``update_interval: 10s`` to original set. I.E.:
+```yaml
+  ## Temp/Humidity/Pressure Sensor for CO²/VOC Sensor
+  - platform: bme280_i2c
+    temperature:
+      id: bme_temp
+      oversampling: 4x
+    humidity:
+      id: bme_humi
+      oversampling: 4x
+    address: 0x76
+    update_interval: 10s
+```
 #### _Sensing List:_
 
 > - 2.5μm Particle Count
