@@ -3,7 +3,7 @@ Converting and adding sensors to an off-the-shelf **VINDRIKTNING Air quality sen
 
 - Turning it in to a Seven-in-One enviroment sensor 🏝
 # Important Update:
-In "Fix your IKEA Air Quality Temperature and Humidity readings" video, I made a mistake in moving (not duplicating) the following lines:
+In [Fix your IKEA Air Quality Temperature and Humidity readings](https://youtu.be/RD7OsCmmR44) video, I made a mistake in moving (not duplicating) the following lines:
 ```yaml
     address: 0x76
     update_interval: 10s
