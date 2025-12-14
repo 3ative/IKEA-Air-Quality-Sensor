@@ -48,8 +48,36 @@ Update to add a "Master" Switch to Enable/Disable sending speed control to the I
 - [Part 3 - Automating the System](https://youtu.be/AnHLN7i5Fx4)
 
 ---
-### 🤝 Found this useful, want to say 'Thanks' and support my efforts. CHEERS🍺
-| Buy me a Coffee | PATREON |
-|-----------------|---------|
-| [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-donate-yellow.svg?style=flat-square&logo=buy-me-a-coffee)](https://www.buymeacoffee.com/3ative) | [![Patreon](https://img.shields.io/badge/Patreon-support-red.svg?style=flat-square&logo=patreon)](https://www.patreon.com/3ative) |
+
+<div align="center">
+
+### 💖 Support This Project
+
+Found this useful? Want to say thanks and fuel future creations?
+
+**Your support keeps the creativity flowing!** 🍺✨
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://www.buymeacoffee.com/3ative">
+        <img src="https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow.svg?style=for-the-badge&logo=buy-me-a-coffee&logoColor=white" alt="Buy Me A Coffee"/>
+        <br/>
+        <b>☕ Buy me a Coffee</b>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://www.patreon.com/3ative">
+        <img src="https://img.shields.io/badge/Patreon-Become%20a%20Patron-red.svg?style=for-the-badge&logo=patreon&logoColor=white" alt="Patreon"/>
+        <br/>
+        <b>💖 Join on Patreon</b>
+      </a>
+    </td>
+  </tr>
+</table>
+
+**Every contribution helps bring more awesome projects to life!** 🚀
+
+</div>
+
 ---
