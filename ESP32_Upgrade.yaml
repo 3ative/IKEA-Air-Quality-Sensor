@@ -145,7 +145,7 @@ number:
     optimistic: true
     min_value: 350
     max_value: 4500
-    step: 10
+    step: 1
     id: co2_cal
     icon: "mdi:molecule-co2"
     entity_category: "config"
