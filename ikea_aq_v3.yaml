@@ -129,3 +129,23 @@ switch:
     icon: mdi:fan
     optimistic: true
     restore_mode: RESTORE_DEFAULT_ON
+
+button:
+  - platform: template
+    name: "CO₂ calibration"
+    entity_category: "config"
+    on_press:
+      then:
+        - scd30.force_recalibration_with_reference:
+            value: !lambda 'return id(co2_cal).state;'
+
+number:
+  - platform: template
+    name: "CO₂ Baseline"
+    optimistic: true
+    min_value: 350
+    max_value: 4500
+    step: 10
+    id: co2_cal
+    icon: "mdi:molecule-co2"
+    entity_category: "config"
