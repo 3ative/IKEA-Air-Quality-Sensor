@@ -1,0 +1,131 @@
+substitutions:
+  ap_id: number.aq_filter_studio_fan_speed ## Entity ID for the Fan (E.G. IKEA Air Filter)
+  auto_enable: binary_sensor.bedroom_window ## Home Assistant Entity to Enable Automation
+  af_speeds: "6" ## Fan Speeds [MUST BE IN QUOTES]
+  pms_low: "50" ## 2.5µm Count for Fan Off [MUST BE IN QUOTES]
+  pms_high: "400" ## 2.5µm Count for Fan MAX [MUST BE IN QUOTES]
+
+esphome:
+  name: "aq-monitor-bedroom"
+  friendly_name: "AQ Monitor Bedroom" ## Location & Entity Names (Capitals and Spaces Allowed)
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: arduino
+
+logger:
+  logs:
+    pm1006: NONE
+    sensor: NONE
+api:
+ota:
+  - platform: esphome
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  min_auth_mode: WPA2
+
+uart:
+  - rx_pin: 20
+    baud_rate: 9600
+
+i2c:
+  ## I²C Port - For Temp/Humidity/Pressure & CO²/VOC Sensors
+  sda: 06 # White
+  scl: 07 # Yellow
+  scan: true
+  id: bus_a
+
+binary_sensor:
+  ## Reads On/Off State from HA
+  - platform: homeassistant
+    entity_id: $auto_enable
+    id: enable_automation
+
+  ## Use the on-board LED to show "Fan Running"
+  - platform: gpio
+    name: Fan
+    id: fan
+    pin:
+      number: 8
+      inverted: True
+
+  ## Brightness Sensor for HA Automations
+  - platform: template
+    name: Bright
+    id: bright
+
+sensor:
+  - platform: scd30
+    temperature_offset: 2.0 °C
+    address: 0x61
+    update_interval: 30s
+
+    co2:
+      name: CO₂
+      accuracy_decimals: 1
+
+    temperature:
+      name: Temperature
+      accuracy_decimals: 1
+      filters:
+        offset: 0.6
+
+    humidity:
+      name: Humidity
+      accuracy_decimals: 1
+      filters:
+        offset: -3.5
+
+  - platform: bme280_i2c
+    pressure:
+      name:  Pressure
+      id: bme_press_ha
+      oversampling: 4x
+    iir_filter: 16x
+    address: 0x76
+    update_interval: 30s
+  
+  ## IKEA PMS 2.5µg Sensor
+  - platform: pm1006
+    id: aq_sensor
+    pm_2_5:
+      name: 2.5µg
+
+    # Automation for IKEA Air Filter #
+      on_value:
+        - if:
+            condition:
+              binary_sensor.is_on: enable_automation
+            then:
+              # Window open — stop the fan
+              - homeassistant.action:
+                  action: number.set_value
+                  data:
+                    entity_id: $ap_id
+                    value: "0"
+            else:
+              - if:
+                  condition:
+                    switch.is_on: enable
+                  then:
+                    # Window closed + Master on — auto-calculate fan speed
+                    - homeassistant.action:
+                        action: number.set_value
+                        data:
+                          entity_id: $ap_id
+                          value: !lambda |-
+                            auto range = (x - $pms_low) / ($pms_high - $pms_low) * $af_speeds;
+                            auto value = (x < $pms_low) ? 0 : (range > $af_speeds) ? $af_speeds : range;
+                            return ceil(value);
+
+switch:
+  ## Master Control - Enable/Disable
+  - platform: template
+    name: Master
+    id: enable
+    icon: mdi:fan
+    optimistic: true
+    restore_mode: RESTORE_DEFAULT_ON
