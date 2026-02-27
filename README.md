@@ -46,6 +46,7 @@ Update to add a "Master" Switch to Enable/Disable sending speed control to the I
 - [Part 1 - IKEA Air Quality ESPHome Convert](https://youtu.be/YmqtMTO5NVc)
 - [Part 2 - IKEA Air Filter ESPHome Convert](https://youtu.be/WB4xxhgggHQ)
 - [Part 3 - Automating the System](https://youtu.be/AnHLN7i5Fx4)
+- [Part 4 - ESP32 and New Sensors: Coming Soon](#)
 
 ---
 
