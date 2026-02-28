@@ -33,20 +33,17 @@ Copy back ``address: 0x76`` and ``update_interval: 10s`` to original set. I.E.:
 
 
 #### ⚡*Code-y Bits*
-- [V1 - Base ESPHome Code](https://github.com/3ative/IKEA-Air-Quality-Sensor/blob/main/ikea_aq_v1.yaml)
-- [V2 - ESPHome Update](https://github.com/3ative/IKEA-Air-Quality-Sensor/blob/main/ikea_aq_v2.yaml)
-
-Update to add a "Master" Switch to Enable/Disable sending speed control to the Ikea Air Filter
-- [Automation Control](https://github.com/3ative/IKEA-Air-Quality-Sensor/blob/main/Automation_Master.yaml)
-
-
+- [Part 1 - Base ESPHome Code](https://github.com/3ative/IKEA-Air-Quality-Sensor/blob/main/ikea_aq_v1.yaml)
+- [Part 2 - ESPHome Update](https://github.com/3ative/IKEA-Air-Quality-Sensor/blob/main/ikea_aq_v2.yaml)
+- [Part 3 - Automation Control](https://github.com/3ative/IKEA-Air-Quality-Sensor/blob/main/Automation_Master.yaml) - Automate Ikea Air Filter
+- [Part 4 - ESP32-C3 Update](https://github.com/3ative/IKEA-Air-Quality-Sensor/blob/main/Ikea_v2_esp32_upgrade.yaml)
 
 
 #### 🎬YouTube tutorials:
 - [Part 1 - IKEA Air Quality ESPHome Convert](https://youtu.be/YmqtMTO5NVc)
 - [Part 2 - IKEA Air Filter ESPHome Convert](https://youtu.be/WB4xxhgggHQ)
 - [Part 3 - Automating the System](https://youtu.be/AnHLN7i5Fx4)
-- [Part 4 - ESP32 and New Sensors: Coming Soon](#)
+- [Part 4 - Version 2 ESP32 and New Sensors: Coming Soon](#)
 
 ---
 
