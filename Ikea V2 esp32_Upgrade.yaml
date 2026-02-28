@@ -1,0 +1,105 @@
+esphome:
+  name: "aq-monitor-bedroom"
+  friendly_name: "AQ Monitor Bedroom"
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: arduino
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  min_auth_mode: WPA2
+
+api:
+
+ota:
+  - platform: esphome
+
+logger:
+  logs:
+    pm1006: NONE  # Suppress raw PM sensor noise
+    sensor: NONE  # Suppress generic sensor spam
+
+# UART — PM1006 particle sensor (IKEA Vindriktning)
+uart:
+  - rx_pin: 20
+    baud_rate: 9600
+
+# I²C for SCD-30 (CO₂/Temp/Humidity) & BME280 (Pressure)
+i2c:
+  scl: 07  # Yellow wire
+  sda: 06  # White wire
+  scan: true
+  id: bus_a
+
+binary_sensor:
+  # On-board LED mirrors the IKEA fan running state
+  - platform: gpio
+    name: Fan
+    id: fan
+    pin:
+      number: 8
+      inverted: True
+
+sensor:
+  # PM1006 - Particulate Matter (IKEA Vindriktning)
+  - platform: pm1006
+    id: aq_sensor
+    pm_2_5:
+      name: 2.5µg
+
+  # SCD30 — CO₂, Temperature & Humidity
+  - platform: scd30
+    address: 0x61
+    update_interval: 30s
+    temperature_offset: 2.0 °C  # Compensate for board self-heating
+
+    co2:
+      name: CO₂
+      accuracy_decimals: 1
+
+    temperature:
+      name: Temperature
+      accuracy_decimals: 1
+      filters:
+        offset: 0.6
+
+    humidity:
+      name: Humidity
+      accuracy_decimals: 1
+      filters:
+        offset: -3.5
+
+  # BME280 — Barometric Pressure
+  - platform: bme280_i2c
+    address: 0x76
+    update_interval: 30s
+    iir_filter: 16x
+    pressure:
+      name: Pressure
+      id: bme_press_ha
+      oversampling: 4x
+
+# CO₂ Baseline - set the known reference value before calibrating
+number:
+  - platform: template
+    name: "CO₂ Baseline"
+    id: co2_cal
+    icon: "mdi:molecule-co2"
+    entity_category: "config"
+    optimistic: true
+    min_value: 350
+    max_value: 4500
+    step: 1
+
+# CO₂ Calibration - forces the SCD-30 to recalibrate against the baseline above
+button:
+  - platform: template
+    name: "CO₂ Calibration"
+    entity_category: "config"
+    on_press:
+      then:
+        - scd30.force_recalibration_with_reference:
+            value: !lambda 'return id(co2_cal).state;'
